@@ -1,6 +1,6 @@
 [submodule "chef/chef-cookbooks"]
 	path = chef/chef-cookbooks
-	url = git://github.com/phunehehe/chef-cookbooks.git
+	url = git@github.com:hupahupa/chef-cookbook.git
 [submodule "chef/chef-repo"]
 	path = chef/chef-repo
-	url = ssh://git@gitlab.cogini.com:1026/phunehehe/chef-repo.git
+	url = git@github.com:hupahupa/chef-repo.git

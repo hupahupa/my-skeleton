@@ -5,6 +5,7 @@
 /assets
 /css-sync
 /logs
+/.cache
 /protected/config/console.php
 /protected/config/db.json
 /protected/config/local.php
