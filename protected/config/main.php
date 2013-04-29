@@ -9,7 +9,7 @@ $pre_config = require(dirname(__FILE__).'/local.php');
 
 return CMap::mergeArray(array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-    'name'=>'TBBC',
+    'name'=>'My Skeleton Site',
 
     'preload'=>array('log'),
 
