@@ -1,10 +1,10 @@
 server {
 
     listen      80;
-    server_name <%= node[:crowd][:server_names].join(" ") %>;
-    root        <%= node[:crowd][:site_dir] %>;
-    access_log  <%= node[:crowd][:log_dir] %>/access.log json;
-    error_log   <%= node[:crowd][:log_dir] %>/error.log;
+    server_name <%= node[:myskeleton][:server_names].join(" ") %>;
+    root        <%= node[:myskeleton][:site_dir] %>;
+    access_log  <%= node[:myskeleton][:log_dir] %>/access.log json;
+    error_log   <%= node[:myskeleton][:log_dir] %>/error.log;
 
     location ~ \.(css|gif|jpeg|jpg|js|png)$ {
         # Server the file if it exists
