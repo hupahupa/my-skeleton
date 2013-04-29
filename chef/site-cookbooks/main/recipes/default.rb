@@ -17,10 +17,10 @@ include_recipe 'git'
 include_recipe 'python'
 
 
-yii_version = node[:crowd][:yii_version]
-app_user = node[:crowd][:app_user]
-db = node[:crowd][:db]
-site_dir = node[:crowd][:site_dir]
+yii_version = node[:myskeleton][:yii_version]
+app_user = node[:myskeleton][:app_user]
+db = node[:myskeleton][:db]
+site_dir = node[:myskeleton][:site_dir]
 
 
 yii_framework yii_version do
@@ -51,7 +51,7 @@ user app_user do
 end
 
 
-directory node[:crowd][:log_dir] do
+directory node[:myskeleton][:log_dir] do
     action :create
     recursive true
 end
@@ -88,10 +88,10 @@ end
 end
 
 
-site_name = 'crowd'
+site_name = 'myskeleton'
 
 template "/etc/nginx/sites-available/#{site_name}" do
-    source 'nginx-crowd.erb'
+    source 'nginx-myskeleton.erb'
     mode '0644'
 end
 
@@ -110,8 +110,8 @@ end
     end
 end
 
-python_env = node[:crowd][:python][:virtualenv]
-build_dir = node[:crowd][:python][:build_dir]
+python_env = node[:myskeleton][:python][:virtualenv]
+build_dir = node[:myskeleton][:python][:build_dir]
 
 [build_dir, python_env].each do |dir|
     directory dir do
