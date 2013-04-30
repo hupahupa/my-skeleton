@@ -69,6 +69,7 @@
  */
 class HighchartsWidget extends CWidget {
 
+	public $chartOptions = array();
 	public $options = array();
 	public $htmlOptions = array();
 
@@ -90,7 +91,9 @@ class HighchartsWidget extends CWidget {
 		}
 
 		// merge options with default values
-		$defaultOptions = array('chart' => array('renderTo' => $id), 'exporting' => array('enabled' => true));
+        $this->chartOptions['renderTo']=$id;
+		$defaultOptions = array('exporting' => array('enabled' => true));
+		$this->options = CMap::mergeArray(array('chart'=>$this->chartOptions), $this->options);
 		$this->options = CMap::mergeArray($defaultOptions, $this->options);
 		$jsOptions = CJavaScript::encode($this->options);
 		$this->registerScripts(__CLASS__ . '#' . $id, "var chart = new Highcharts.Chart($jsOptions);");
@@ -116,19 +119,19 @@ class HighchartsWidget extends CWidget {
 			$scriptFile = YII_DEBUG ? 'exporting.src.js' : 'exporting.js';
 			$cs->registerScriptFile("$baseUrl/modules/$scriptFile");
 		}
-		
+
 		// register supplemental chart types library if needed
 		if(isset($this->options['chart']['type']) && in_array($this->options['chart']['type'], array('gauge', 'arearange', 'areasplinerange', 'columnrange'))) {
 			$scriptFile = YII_DEBUG ? 'highcharts-more.src.js' : 'highcharts-more.js';
 			$cs->registerScriptFile("$baseUrl/$scriptFile");
 		}
-		
+
 		// register global theme if specified via the 'theme' option
 		if(isset($this->options['theme'])) {
 			$scriptFile = $this->options['theme'] . ".js";
 			$cs->registerScriptFile("$baseUrl/themes/$scriptFile");
 		}
-		
+
 		$cs->registerScript($id, $embeddedScript, CClientScript::POS_LOAD);
 	}
 }
