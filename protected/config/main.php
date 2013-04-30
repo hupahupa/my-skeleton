@@ -19,6 +19,7 @@ return CMap::mergeArray(array(
         'application.behaviors.*',
         'application.vendors.*',
         'application.helpers.*',
+        'application.extensions.*',
     ),
 
     'components'=>array(
