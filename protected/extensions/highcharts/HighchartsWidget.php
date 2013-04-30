@@ -68,8 +68,6 @@
  * wish to use a different container, feel free to specify a custom value.
  */
 class HighchartsWidget extends CWidget {
-
-	public $chartOptions = array();
 	public $options = array();
 	public $htmlOptions = array();
 
@@ -91,9 +89,7 @@ class HighchartsWidget extends CWidget {
 		}
 
 		// merge options with default values
-        $this->chartOptions['renderTo']=$id;
-		$defaultOptions = array('exporting' => array('enabled' => true));
-		$this->options = CMap::mergeArray(array('chart'=>$this->chartOptions), $this->options);
+		$defaultOptions = array('chart' => array('renderTo' => $id), 'exporting' => array('enabled' => true));
 		$this->options = CMap::mergeArray($defaultOptions, $this->options);
 		$jsOptions = CJavaScript::encode($this->options);
 		$this->registerScripts(__CLASS__ . '#' . $id, "var chart = new Highcharts.Chart($jsOptions);");

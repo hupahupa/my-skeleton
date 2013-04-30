@@ -24,10 +24,10 @@
 
 <?//Area?>
 <?$this->Widget('application.extensions.highcharts.HighchartsWidget', array(
-    'chartOptions'=>array(
-        'type'=>'area',//Original extention forget to add type to chart so I just add new type in.
-    ),
     'options'=>array(
+        'chart'=>array(
+            'type'=>'area',
+        ),
         'credits' => array('enabled' => false),
         'exporting' => array('enabled' => false),
         'theme' => null,//dark-blue, dark-green,  gray, grid, skies
