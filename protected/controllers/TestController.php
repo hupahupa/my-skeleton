@@ -16,4 +16,8 @@ class TestController extends Controller {
         }
         $this->render('choosen_form',array());
     }
+
+    public function actionHighchart(){
+        $this->render('highchart',array());
+    }
 }
