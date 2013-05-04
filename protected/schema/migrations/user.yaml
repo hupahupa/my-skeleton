@@ -20,3 +20,9 @@ from: lmd_1
 to: lmd_2
 sql: |
   ALTER TABLE "user" RENAME TO tb_user;
+---
+table: user
+from: lmd_2
+to: lmd_3
+sql: |
+  ALTER TABLE "tb_user" ADD COLUMN "company" VARCHAR(64);

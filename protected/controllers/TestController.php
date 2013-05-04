@@ -9,7 +9,11 @@ class TestController extends Controller {
         );
     }
 
-    public function actionChoosen(){
+    public function actionIndex(){
+        $this->render('index', array());
+    }
+
+    public function actionChosen(){
         if(isset($_POST['country'])){
             print_r($_POST);
             die();
@@ -19,5 +23,20 @@ class TestController extends Controller {
 
     public function actionHighchart(){
         $this->render('highchart',array());
+    }
+
+    public function actionGroupGridView(){
+        $dp1 = new CActiveDataProvider('User', array(
+            'sort'=>array(
+                'attributes'=>array(
+                      'created_at',
+                 ),
+                 'defaultOrder' => 'created_at',
+            ),
+            'pagination' => array(
+              'pagesize' => 10,
+            ),
+        ));
+        $this->render('groupGridView',array('dp1'=>$dp1));
     }
 }
